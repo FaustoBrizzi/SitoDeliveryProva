@@ -1,0 +1,1561 @@
+/*-----------------------------------------------------------------------------------------------
+                                       GENERAL
+-------------------------------------------------------------------------------------------------*/
+body{
+  font-family: 'Inter', sans-serif;   /* Ho messo il font inter da google font */
+  font-size: 16PX;
+  background: #04919b;
+}
+
+a{text-decoration: none;} /*Tolgo la sottolineatura a tutti i link */
+
+p, h1, h2, h3, h4, h5{
+  color: #000;
+  padding-bottom: 30px;
+  font-style: bold;
+}
+
+p{
+  line-height: 20px;
+  color: #000;
+  font-weight: 500;
+}
+
+/* Stabilisco delle classi che utilizzerò all'interno del design per dare una dimensione ai titoli */
+.big-text{font-size: 70px; font-weight: 900;}
+.med-text{font-size: 40px; font-weight: 900;}
+.normal-text{font-size: 30px;}
+.small-text{font-size: 14px;}
+.fw700{font-weight: 700;}
+.fw900{font-weight: 900;}
+
+.button{
+  padding: 18px 28px; /* Con questa sintassi vado a definire un paddind sopre e sotto di 18 e dx sx di 28 */
+  background: #ad0c33;
+  color: 	#fff;
+  display: inline-block; /* Per applicare il padding a tutto il link del bottone */
+  border-radius: 4px;
+  font-size: 18px;
+}
+
+
+/*----------------------------------
+               TABLET
+-----------------------------------*/
+@media (min-width: 767px) {   /* Media query */
+  @media (max-width: 1280px) {
+  .big-text{font-size: 55px;}   /* Creo un testo big adattato per le dimensioni di un tablet */
+  .med-text{font-size: 30px; font-weight: 900;}
+  }
+}
+
+
+/*----------------------------------
+              SMARTPHONE
+-----------------------------------*/
+@media (max-width: 766px) {     /* Media query */
+  .big-text{font-size: 40px;}   /* Creo un testo big adattato per le dimensioni dello snartphone */
+  .med-text{font-size: 20px; font-weight: 900;}
+
+  body{
+    font-size: 14px;
+  }
+}
+
+
+/*-----------------------------------------------------------------------------------------------
+                                            HEADER
+-------------------------------------------------------------------------------------------------*/
+.header{
+  width: 100%;
+  position: absolute; /* Lo voglio fisso in alto nello schermo */
+  /* Voglio posizionare l'header sopra il video di background */
+  z-index: 10;
+  /*----------------------------------------------------------*/
+  top: 0;
+  padding: 30px;
+  display: flex; /* FLEXBOX è una proprietà del css che mi permette di mettere sulla stessa riga tutti gli elementi all'interno di un contenitore, quindi metto nella stessa riga logo, menù e cta (COMODISSIMO)*/
+  max-width: 1350px; /* Voglio che sia largo come la hero__content se lo volessi più largo basterebbe mettere un max width maggiore*/
+  /* Per allineare l'header al centro non posso usare margin auto, come nella hero__content perchè ho il posizion fixed, quindi uso la proprietà traslate per spostarlo a sx dopo aver fatto left:50% */
+  left: 50%;
+  transform: translateX(-50%); /* Trik utile in casi come questo */
+}
+
+.logo{
+  width: 112.5px;
+  height: 150px;
+  margin: 0 auto; /* Accentro l'immagine */
+  z-index: 1; /* Visto che il menù ha z-index 0 il logo gli finirà sopra in caso di accavallamento (come accade nello smartphone) */
+  display: flex;
+  align-items: center; /* Display: flex + align-items: center posiziono nel centro verticale il contenuto del div, in questo caso il logo */
+  background-image: url(Immagini/logo.png) ;   /* Inserisco un'immagine di backgroung, inserendo l'immagine in questo modo verrà automaticamente ridimenzionata per ogni risoluzione */
+  background-size: cover;  /* scrivo con tre sintassi diverse il fatto che la mia foto di background dovra seguire le dimensioni della pagina*/
+  -o-background-size: cover;
+  -moz-background-size: cover;
+  background-position: center; /* Centriamo l'immagine */
+  border-radius: 10px;
+  border: 1px solid lightgrey;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.menu{
+  width: 100%; /* Così il menù andrà ad occupare più spazio possibile */
+  z-index: 0; /* La prorprietà Z-INDEX posiziona gli elementi nell'asse z del foglio definendo così cosa va sopra */
+}
+
+.menu li{
+  float: right; /* Voglio il menù a destra */
+  display:inline-block; /* Così ho allineato orizz. la lista (menù) */
+  }
+
+.menu li a{
+  color: orange;
+  padding: 25px;
+  display: block; /* Gli do il display block, perchè altrimenti il padding non viene dato su tutti i lati */
+  font-size: 20px;
+  border-radius: 10px; /* Arrotondo i bordi dei box che contengono gli item del menù */
+  transition: 0.5s cubic-bezier(.215, .61, .355, 1); /* Creo un animazione che sfuma il background dato all'hover degli item del menù */
+  cursor: pointer;
+}
+
+.menu li a:hover{   /* La classe hover applicata ai link del menu crea un effetto passando con il mouse su di essi */
+  background: orange;
+  color: #fff;
+  opacity: 80;
+  box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2);
+  }
+
+.hamburger{display: none;} /* Al difuori dello smartphone non avremo bisogno della tendina */
+
+
+/*----------------------------------
+              SMARTPHONE
+-----------------------------------*/
+@media (max-width: 766px) {
+
+  .menu{
+    transition: all 1s cubic-bezier(.215, .61, .355, 1); /* Creo l'animazione per il menù mobile */
+    position: absolute; /* Adesso il menù non è più fisso */
+    top: 0;
+    background: #000;
+    height: 100vh; /* Voglio che il menù occupi tutta l'altezza disponibile sullo schermo, uso la proprietà vertical height (vh) dopo il 100 */
+    padding-top: 170px; /*creo uno pazio per mosrare il logo anche con la tendina abbassata */
+    right: -100%; /* Il menù voglio farlo comparire da destra, quindi inizialmente lo traslo tutto a destra */
+  }
+
+  .menu li{
+    display:block; /* Metto le voci del menù una sotto l'altra */
+    float: none; /* Gli tolgo il float, cosi stanno uno sotto l'altro */
+    }
+
+  .menu li a{
+    padding: 15px 30px;
+    font-size: 20px;
+  }
+
+  .menu--open{right: 0;} /* Definisco la classe modificatrice menu--open dandogli right:0; così che il menù comparirà da dx */
+
+  .hamburger{
+    display: inline-block; /* Adesso voglio vederlo */
+    position: absolute; /* Posiziono l'amburger in maniera assoluta a top:47px e right:25px , quindì andrà aggiustato manualmente volta per volta cambiando il logo, visto che la dimensione del logo modificherà quelle dell'header */
+    top: 39.5px;
+    right: 30px;
+    width: 55px;
+    height: 55px;
+    background: #fff;
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    display: flex;
+    align-items: center; /* Display: flex + align-items: center posiziono la linea nel centro verticale */
+    overflow: hidden; /* Quando l'asta esce dall'icona la cancella */
+  }
+
+  .hamburger span{
+    position: absolute;
+    width: 30px;
+    height: 4px;
+    background: orange;
+    border-radius: 4px;
+    left: 12.5px;/* Allineo la linea anche in orizzontale */
+    transition: 0.5s; /* Definisco come sarà l'animazione degli span */
+  }
+
+  .asta-1{
+    transform: translateY(-12.5px);  /* Sposto in alto l'asta 1 */
+  }
+
+  .asta-3{
+    transform: translateY(12.5px);  /* Sposto in basso l'asta 3 */
+  }
+
+  .asta-1--rotation{
+    transform: translateY(0) rotate(45deg); /*Sposto l'asta in alto al centro e la faccio ruotare */
+    transition-delay: 0.125s; /* Metto un leggero ritardo prima dello spostamento */
+  }
+
+  .asta-2--out{
+    transform: translateX(60px);  /* Porto fuori dall'icona l'asta centrale */
+  }
+
+  .asta-3--rotation{
+    transform: translateY(0) rotate(315deg); /*Sposto l'asta in basso al centro e la faccio ruotare */
+    transition-delay: 0.25s; /* Metto un leggero ritardo prima dello spostamento */
+  }
+
+  .menu{
+    position: absolute; /* Adesso il menù non è più fisso */
+    top: 0;
+    background: #000;
+    height: 100vh; /* Voglio che il menù occupi tutta l'altezza disponibile sullo schermo, uso la proprietà vertical height (vh) dopo il 100 */
+    padding-top: 170px; /*creo uno pazio per mosrare il logo anche con la tendina abbassata */
+    right: -100%; /* Il menù voglio farlo comparire da destra, quindi inizialmente lo traslo tutto a destra */
+  }
+
+  .menu li{display:block;}  /* Metto le voci del menù una sotto l'altra */
+
+  .menu li a{
+    padding: 15px 30px;
+    font-size: 20px;
+  }
+
+  .menu--open{right: 0;} /* Definisco la classe modificatrice menu--open dandogli right:0; così che il menù comparirà da dx */
+
+  .logo{
+    width: 85px;
+    height: 115px;
+    margin: 0 auto; /* Accentro l'immagine */
+    z-index: 1; /* Visto che il menù ha z-index 0 il logo gli finirà sopra in caso di accavallamento (come accade nello smartphone) */
+    display: flex;
+    align-items: center; /* Display: flex + align-items: center posiziono nel centro verticale il contenuto del div, in questo caso il logo */
+    background-image: url(Immagini/logo.png) ;   /* Inserisco un'immagine di backgroung, inserendo l'immagine in questo modo verrà automaticamente ridimenzionata per ogni risoluzione */
+    background-size: cover;  /* scrivo con tre sintassi diverse il fatto che la mia foto di background dovra seguire le dimensioni della pagina*/
+    -o-background-size: cover;
+    -moz-background-size: cover;
+    background-position: center; /* Centriamo l'immagine */
+    border-radius: 5px;
+    border: 1px solid lightgrey;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+  }
+
+}
+
+
+/*-----------------------------------------------------------------------------------------------
+                                       HERO SECTION
+-------------------------------------------------------------------------------------------------*/
+.hero{
+  position: relative; /* Mi serve per mettere il video (o foto) sotto la hero__content, mi serve che sia prima delle altre proprietà della hero */
+  height: 100vh; /* Altezza di 100vh, ossia tutto lo schermo disponibile */
+
+/* ------------------------------------------------------Allineo al centro verticale hero__content, per farlo uso queste definizioni "standard". ------------------------------------------------*/
+  display: flex; /* Uso il FLEXBOX per allineare la hero__content (quindi il contenuto della scatola hero) */
+  width: 100%;
+  align-items: center;
+/* ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+
+/* Ecco la sintassi per ottrnere un' immagine di sfondo */
+background-image: url(Immagini/home-pc.jpg) ;   /* Inserisco un'immagine di backgroung, inserendo l'immagine in questo modo verrà automaticamente ridimenzionata per ogni risoluzione */
+background-size: cover;  /* scrivo con tre sintassi diverse il fatto che la mia foto di background dovra seguire le dimensioni della pagina*/
+-o-background-size: cover;
+-moz-background-size: cover;
+background-position: center; /* Centriamo l'immagine */
+}
+
+.hero__filter{   /* Definiamo il filtro dell'immagine di background */
+  background: #000;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: 0; /* Con z-index possiamo decidere se mettere il filtro sopra o sotto il testo */
+  opacity: 0.2; /* Modificando la opacity deciderò quanto sarà aggressivo sulla foto il filtro */
+}
+
+.hero__content{
+  text-align: center;
+  margin: 0 auto; /* Allineo hero__content anche in orizz. */
+  margin-top: 80px; /* Lo abbasso leggermente */
+  z-index: 1; /* Metto il contenuto della hero sopra il filtro */
+}
+
+.hero__button{
+  padding: 30px 70px; /* Con questa sintassi vado a definire un paddind sopre e sotto di 18 e dx sx di 28 */
+  background: orange;
+  color: 	#fff;
+  display: inline-block; /* Per applicare il padding a tutto il link del bottone */
+  border-radius: 30px;
+  font-size: 60px;
+  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.2);
+}
+
+
+/*----------------------------------
+               TABLET
+-----------------------------------*/
+@media (min-width: 767px) {   /* Media query */
+
+  @media (max-width: 1023px) {
+    .hero{
+      /* Metto un'immagine modificata apuntino poer smartphone */
+      background-image: url(Immagini/home.jpg) ;   /* Inserisco un'immagine di backgroung, inserendo l'immagine in questo modo verrà automaticamente ridimenzionata per ogni risoluzione */
+      background-size: cover;  /* scrivo con tre sintassi diverse il fatto che la mia foto di background dovra seguire le dimensioni della pagina*/
+      -o-background-size: cover;
+      -moz-background-size: cover;
+      background-position: center; /* Centriamo l'immagine */
+    }
+
+    .hero__button{
+      padding: 20px 45px; /* Con questa sintassi vado a definire un paddind sopre e sotto di 18 e dx sx di 28 */
+      border-radius: 15px;
+      font-size: 45px;
+    }
+
+  }
+}
+
+/*----------------------------------
+              SMARTPHONE
+-----------------------------------*/
+@media (max-width: 766px) {
+
+  .hero{
+    /* Metto un'immagine modificata apuntino poer smartphone */
+    background-image: url(Immagini/home-sma.jpg) ;   /* Inserisco un'immagine di backgroung, inserendo l'immagine in questo modo verrà automaticamente ridimenzionata per ogni risoluzione */
+    background-size: cover;  /* scrivo con tre sintassi diverse il fatto che la mia foto di background dovra seguire le dimensioni della pagina*/
+    -o-background-size: cover;
+    -moz-background-size: cover;
+    background-position: center; /* Centriamo l'immagine */
+  }
+
+  .hero__button{
+    padding: 18px 30px; /* Con questa sintassi vado a definire un paddind sopre e sotto di 18 e dx sx di 28 */
+    border-radius: 10px;
+    font-size: 30px;
+  }
+
+}
+
+
+
+
+/*-----------------------------------------------------------------------------------------------
+                                        ORDINE
+-------------------------------------------------------------------------------------------------*/
+/* Finestra Carrello */
+.contenitore-finestra-cart{
+  width: 100%;
+  position: fixed; /* Lo voglio fisso in alto nello schermo */
+  z-index: 5;
+  top: 0;
+  left: 0;
+}
+
+.finestra-cart{
+  transition: all 1s cubic-bezier(.215, .61, .355, 1); /* Creo l'animazione per il menù mobile */
+  position: absolute; /* Adesso il menù non è più fisso */
+  top: 190px;
+  height: 72vh; /* Voglio che il menù occupi tutta l'altezza disponibile sullo schermo, uso la proprietà vertical height (vh) dopo il 100 */
+  width: 350px;
+  right: -350px; /* Il menù voglio farlo comparire da destra, quindi inizialmente lo traslo tutto a destra */
+  background: #04919b;
+  border: 2px solid orange;
+  border-radius: 30px;
+}
+
+.cart--open{right: 0;}
+
+.finestra-cart__back{
+  width: 78px;
+  height: 55px;
+  margin: 5px 5px 0 5px;
+  cursor: pointer;
+  background-image: url(Immagini/freccia-finestra.png) ;   /* Inserisco un'immagine di backgroung, inserendo l'immagine in questo modo verrà automaticamente ridimenzionata per ogni risoluzione */
+  background-size: cover;  /* scrivo con tre sintassi diverse il fatto che la mia foto di background dovra seguire le dimensioni della pagina*/
+  -o-background-size: cover;
+  -moz-background-size: cover;
+  background-position: center; /* Centriamo l'immagine */
+}
+
+.finestra-cart__content{
+  width: 100%;
+  max-width: 300px;
+  text-align: center;
+  margin: 0 auto; /* Allineo hero__content anche in orizz. */
+  z-index: 1; /* Metto il contenuto della hero sopra il filtro */
+}
+
+.finestra-cart h2{
+  position: relative;
+  padding-bottom: 10px;
+  font-size: 25px;
+  font-weight: 900;
+  margin: 0;
+}
+
+.finestra-cart__prodotto{
+  margin: 0 auto;
+  width: 275px;
+  height: 70px;
+  margin-top: 10px;
+  padding: 3px;
+  /* Allineo verticalmente al centro il suo contenuto */
+  display: flex; /* Metto nella stessa riga tutti gli elementi contenuti dall'elemento scelta__content__choise */
+  align-items: center;
+  /*---------------------------------------------------*/
+  border: 1px solid lightgrey;
+  box-shadow: 3px 3px  6px rgba(0, 0, 0, 0.5);
+  border-radius: 20px;
+  background: linear-gradient(0deg, rgba(0,0,0,.2), rgba(0,0,0,0.1)100%);  /* Creo un simpatico sfondo scuro nei bottoni */
+}
+
+.finestra-cart__prodotto__imm{
+  width: 90px;
+  height: 60px;
+  border-radius: 15px;
+  margin: 0 auto;
+}
+
+#finestra-cart__prodotto__info{
+    height: 60px;
+    width: 75%;
+}
+
+.finestra-cart__prodotto__nome{
+  width: 100%;
+  height: 42%;
+  font-size: 20px;
+  font-weight: 700;
+  color: orange;
+  text-shadow: 1px 1px 2px black;
+}
+
+#finestra-cart__prodotto__prezzo-quant{
+  width: 100%;
+  height: 55%;
+  display: flex;
+  font-size: 20px;
+  font-weight: 500;
+  color: lightgrey;
+  text-shadow: 1px 1px 1px black;
+  align-items: center;
+}
+
+.finestra-cart__prodotto__quant{width: 35%;}
+
+.finestra-cart__prodotto__prezzo{width: 35%;}
+
+.finestra-cart__prodotto__rim{
+  margin-left: 7px;
+  height: 85%;
+  border-radius: 3px;
+  border: 1px solid orange;
+  cursor: pointer;
+}
+
+.finestra-cart__totale{
+  padding: 10px;
+  width: 100%;
+  position: relative;
+  display: flex; /* FLEXBOX è una proprietà del css che mi permette di mettere sulla stessa riga tutti gli elementi all'interno di un contenitore, quindi metto nella stessa riga logo, menù e cta (COMODISSIMO)*/
+  max-width: 900px; /* Voglio che sia largo come la hero__content se lo volessi più largo basterebbe mettere un max width maggiore*/
+  text-align: center; /* Centro i due testi orizz. */
+  align-items: center; /* Centro i due testi vert. */
+}
+
+.finestra-cart__totale__testo{
+  width: 50%;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.finestra-cart__totale__prezzo{
+  width: 50%;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.ordine-online{
+  position: relative;
+  height: 100%;
+  background-color: #efefef;
+  display: flex; /* Allineo sulla stessa riga */
+  width: 100%;
+}
+
+.ordine-online__content{
+  margin: 0 auto;/* Allineo il suo contenuto in orizzontale */
+  align-items: center; /* Allineo i prodotti al centro */
+  max-width: 1000px;
+}
+
+.finestra-cart__button{
+  padding: 5px 10px; /* Con questa sintassi vado a definire un paddind sopre e sotto di 18 e dx sx di 28 */
+  background: orange;
+  color: 	#fff;
+  display: inline-block; /* Per applicare il padding a tutto il link del bottone */
+  border-radius: 10px;
+  font-size: 20px;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.insegna{
+  width: 500px;
+  height: 175px;
+  margin: 0 auto;
+  /* Ecco la sintassi per ottrnere un' immagine di sfondo */
+  background-image: url(Immagini/ins.png) ;
+  background-size: cover;  /* scrivo con tre sintassi diverse il fatto che la mia foto di background dovra seguire le dimensioni della pagina*/
+  -o-background-size: cover;
+  -moz-background-size: cover;
+  background-position: center; /* Centriamo l'immagine */
+  
+}
+
+/*
+Uso FLICKITY è bellimo e super figo, ma per inderirlo in un sito a scopo commerciale è necessario
+pagare la licenza da 25$.
+*/
+/* Slider */
+.flickity-button{display: none;}
+
+.flickity-page-dots{transform: translateY(-25px);}  /* Avvicino i pallini ai carosell */
+
+.main-carousel{padding: 0 0 20px 0;}
+
+.carousel-cell{
+  height: 80px;
+  width: 150px;
+  background: #04919b;
+  border-radius: 15px;  /*Rendo la cela tonda*/
+  border: 1px solid #04919b;
+/* Centro il testo al loro interno */
+  line-height: 80px;
+  text-align: center;
+/*---------------------------------*/
+  margin-right: 15px;
+}
+
+.carousel-cell-zoom{
+  height: 80px;
+  width: 150px;
+  margin-right: 15px;
+}
+.carousel-cell-zoom__content{
+  height: 100%;
+  width: 100%;
+  background: #8ebcc1;
+  border-radius: 15px;
+  border: 1px solid lightblue;
+  line-height: 80px;
+  text-align: center;
+}
+
+
+.cell-on{background: orange;} /* Classe che indica quale cella è accesa */
+/*--------------------------------------------------------------------------------------------*/
+
+.contenitore-prodotti{  /* Accentro i prodotti */
+  max-width: 1000px;
+  height: 100%;
+  margin: 0 auto;
+}
+/* Prodotti */
+.prodotto{
+  height: 300px;
+  width: 225px;
+  border-radius: 40px;
+  box-shadow: 2px 2px  12px rgba(0, 0, 0, 0.9);
+  text-align: center;
+  padding: 20px; /* Distanzio un po dal bordo */
+  background: linear-gradient(0deg, #04919b, rgba(0,0,0,0.4)80%); 
+  float: left; /* I prodotti vanno a capo mano mano */
+  margin: 12px;
+  z-index: 0;
+}
+
+.prodotto__nome{
+  margin-top: 15px;
+  padding-bottom: 0;
+}
+
+.prodotto__box{
+  /* Allineo verticalmente al centro il suo contenuto */
+  display: flex; /* Metto nella stessa riga tutti gli elementi contenuti dall'elemento scelta__content__choise */
+  align-items: center;
+  /*---------------------------------------------------*/
+  width: 185px;
+  height: 65px;
+  border-radius: 15px;
+  box-shadow: 1px 1px 2px rgba(0, 0, 0, 10);
+  background: #fff;
+  margin-top: 15px;
+  z-index: 0;
+}
+
+.prodotto__box__sub{
+  width: 28%;
+  cursor: pointer; /* Fa diventare il mouse una manina con l'indice, mooolto carina */
+}
+.prodotto__box__centro{
+  width: 44%;
+  height: 100%;
+  z-index: 0;
+}
+
+.prodotto__box__centro__riga1{
+  width: 100%;
+  height: 16px;
+  display: flex;
+  margin-top: 2px;
+}
+
+.prodotto__box__Qt{
+  height: 16px;
+  width: 50%;
+  display: flex;
+}
+
+.prodotto__box__Qt__testo{
+  margin-left: 1px;
+  margin-right: 2px;
+}
+
+.prodotto__box__prezzo{
+  height: 16px;
+  width: 50%;
+  display: flex;
+}
+
+.prodotto__box__prezzo__testo{
+  margin-left: 6px;
+}
+
+.prodotto__box__prezzo__numero{
+  margin-left: 3px;
+}
+
+.prodotto__box__add{
+  width: 28%;
+  cursor: pointer; /* Fa diventare il mouse una manina con l'indice, mooolto carina */
+}
+
+.prodotto__box__cart{
+  background: orange;
+  margin-top: 6px;
+  border-radius: 7px;
+  cursor: pointer;
+  z-index: 0;
+}
+
+.immagine-prodotto{
+  width: 185px;
+  height: 145px;
+  margin: 0 auto; /* Accentro l'immagine */
+  border-radius: 20px;
+}
+
+.tozzetti__imm{
+  width: 150px;
+  height: 150px;
+  margin: 0 auto; /* Accentro l'immagine */
+  border-radius: 20px;
+  /* Ecco la sintassi per ottrnere un' immagine di sfondo */
+  background-image: url(Immagini/tozzetti.jpg) ;   /* Inserisco un'immagine di backgroung, inserendo l'immagine in questo modo verrà automaticamente ridimenzionata per ogni risoluzione */
+  background-size: cover;  /* scrivo con tre sintassi diverse il fatto che la mia foto di background dovra seguire le dimensioni della pagina*/
+  -o-background-size: cover;
+  -moz-background-size: cover;
+  background-position: center; /* Centriamo l'immagine */
+}
+.gnocchetti-fichi__imm{
+  width: 150px;
+  height: 150px;
+  margin: 0 auto; /* Accentro l'immagine */
+  border-radius: 20px;
+  /* Ecco la sintassi per ottrnere un' immagine di sfondo */
+  background-image: url(Immagini/gnocchetti-fichi.jpg) ;   /* Inserisco un'immagine di backgroung, inserendo l'immagine in questo modo verrà automaticamente ridimenzionata per ogni risoluzione */
+  background-size: cover;  /* scrivo con tre sintassi diverse il fatto che la mia foto di background dovra seguire le dimensioni della pagina*/
+  -o-background-size: cover;
+  -moz-background-size: cover;
+  background-position: center; /* Centriamo l'immagine */
+}
+.gnocchetti-limone__imm{
+  width: 150px;
+  height: 150px;
+  margin: 0 auto; /* Accentro l'immagine */
+  border-radius: 20px;
+  /* Ecco la sintassi per ottrnere un' immagine di sfondo */
+  background-image: url(Immagini/gnocchetti-limone.png) ;   /* Inserisco un'immagine di backgroung, inserendo l'immagine in questo modo verrà automaticamente ridimenzionata per ogni risoluzione */
+  background-size: cover;  /* scrivo con tre sintassi diverse il fatto che la mia foto di background dovra seguire le dimensioni della pagina*/
+  -o-background-size: cover;
+  -moz-background-size: cover;
+  background-position: center; /* Centriamo l'immagine */
+}
+.rusticini__imm{
+  width: 150px;
+  height: 150px;
+  margin: 0 auto; /* Accentro l'immagine */
+  border-radius: 20px;
+  /* Ecco la sintassi per ottrnere un' immagine di sfondo */
+  background-image: url(Immagini/rusticini.jpg) ;   /* Inserisco un'immagine di backgroung, inserendo l'immagine in questo modo verrà automaticamente ridimenzionata per ogni risoluzione */
+  background-size: cover;  /* scrivo con tre sintassi diverse il fatto che la mia foto di background dovra seguire le dimensioni della pagina*/
+  -o-background-size: cover;
+  -moz-background-size: cover;
+  background-position: center; /* Centriamo l'immagine */
+}
+.caffe__imm{
+  width: 150px;
+  height: 150px;
+  margin: 0 auto; /* Accentro l'immagine */
+  border-radius: 20px;
+  /* Ecco la sintassi per ottrnere un' immagine di sfondo */
+  background-image: url(Immagini/caffe.png) ;   /* Inserisco un'immagine di backgroung, inserendo l'immagine in questo modo verrà automaticamente ridimenzionata per ogni risoluzione */
+  background-size: cover;  /* scrivo con tre sintassi diverse il fatto che la mia foto di background dovra seguire le dimensioni della pagina*/
+  -o-background-size: cover;
+  -moz-background-size: cover;
+  background-position: center; /* Centriamo l'immagine */
+}
+.cappuccino__imm{
+  width: 150px;
+  height: 150px;
+  margin: 0 auto; /* Accentro l'immagine */
+  border-radius: 20px;
+  /* Ecco la sintassi per ottrnere un' immagine di sfondo */
+  background-image: url(Immagini/cappuccino.png) ;   /* Inserisco un'immagine di backgroung, inserendo l'immagine in questo modo verrà automaticamente ridimenzionata per ogni risoluzione */
+  background-size: cover;  /* scrivo con tre sintassi diverse il fatto che la mia foto di background dovra seguire le dimensioni della pagina*/
+  -o-background-size: cover;
+  -moz-background-size: cover;
+  background-position: center; /* Centriamo l'immagine */
+}
+.caffe-latte__imm{
+  width: 150px;
+  height: 150px;
+  margin: 0 auto; /* Accentro l'immagine */
+  border-radius: 20px;
+  /* Ecco la sintassi per ottrnere un' immagine di sfondo */
+  background-image: url(Immagini/caffe-latte.png) ;   /* Inserisco un'immagine di backgroung, inserendo l'immagine in questo modo verrà automaticamente ridimenzionata per ogni risoluzione */
+  background-size: cover;  /* scrivo con tre sintassi diverse il fatto che la mia foto di background dovra seguire le dimensioni della pagina*/
+  -o-background-size: cover;
+  -moz-background-size: cover;
+  background-position: center; /* Centriamo l'immagine */
+}
+.ginseng__imm{
+  width: 150px;
+  height: 150px;
+  margin: 0 auto; /* Accentro l'immagine */
+  border-radius: 20px;
+  /* Ecco la sintassi per ottrnere un' immagine di sfondo */
+  background-image: url(Immagini/ginseng.png) ;   /* Inserisco un'immagine di backgroung, inserendo l'immagine in questo modo verrà automaticamente ridimenzionata per ogni risoluzione */
+  background-size: cover;  /* scrivo con tre sintassi diverse il fatto che la mia foto di background dovra seguire le dimensioni della pagina*/
+  -o-background-size: cover;
+  -moz-background-size: cover;
+  background-position: center; /* Centriamo l'immagine */
+}
+.orzo__imm{
+  width: 150px;
+  height: 150px;
+  margin: 0 auto; /* Accentro l'immagine */
+  border-radius: 20px;
+  /* Ecco la sintassi per ottrnere un' immagine di sfondo */
+  background-image: url(Immagini/orzo.png) ;   /* Inserisco un'immagine di backgroung, inserendo l'immagine in questo modo verrà automaticamente ridimenzionata per ogni risoluzione */
+  background-size: cover;  /* scrivo con tre sintassi diverse il fatto che la mia foto di background dovra seguire le dimensioni della pagina*/
+  -o-background-size: cover;
+  -moz-background-size: cover;
+  background-position: center; /* Centriamo l'immagine */
+}
+.cioccolata-calda__imm{
+  width: 150px;
+  height: 150px;
+  margin: 0 auto; /* Accentro l'immagine */
+  border-radius: 20px;
+  /* Ecco la sintassi per ottrnere un' immagine di sfondo */
+  background-image: url(Immagini/cioccolata-calda.png) ;   /* Inserisco un'immagine di backgroung, inserendo l'immagine in questo modo verrà automaticamente ridimenzionata per ogni risoluzione */
+  background-size: cover;  /* scrivo con tre sintassi diverse il fatto che la mia foto di background dovra seguire le dimensioni della pagina*/
+  -o-background-size: cover;
+  -moz-background-size: cover;
+  background-position: center; /* Centriamo l'immagine */
+}
+.caffe-macchiato__imm{
+  width: 150px;
+  height: 150px;
+  margin: 0 auto; /* Accentro l'immagine */
+  border-radius: 20px;
+  /* Ecco la sintassi per ottrnere un' immagine di sfondo */
+  background-image: url(Immagini/caffe-macchiato.png) ;   /* Inserisco un'immagine di backgroung, inserendo l'immagine in questo modo verrà automaticamente ridimenzionata per ogni risoluzione */
+  background-size: cover;  /* scrivo con tre sintassi diverse il fatto che la mia foto di background dovra seguire le dimensioni della pagina*/
+  -o-background-size: cover;
+  -moz-background-size: cover;
+  background-position: center; /* Centriamo l'immagine */
+}
+.cocacola__imm{
+  width: 150px;
+  height: 150px;
+  margin: 0 auto; /* Accentro l'immagine */
+  border-radius: 20px;
+  /* Ecco la sintassi per ottrnere un' immagine di sfondo */
+  background-image: url(Immagini/cocacola.png) ;   /* Inserisco un'immagine di backgroung, inserendo l'immagine in questo modo verrà automaticamente ridimenzionata per ogni risoluzione */
+  background-size: cover;  /* scrivo con tre sintassi diverse il fatto che la mia foto di background dovra seguire le dimensioni della pagina*/
+  -o-background-size: cover;
+  -moz-background-size: cover;
+  background-position: center; /* Centriamo l'immagine */
+}
+.cocacola-latt-grande__imm{
+  width: 150px;
+  height: 150px;
+  margin: 0 auto; /* Accentro l'immagine */
+  border-radius: 20px;
+  /* Ecco la sintassi per ottrnere un' immagine di sfondo */
+  background-image: url(Immagini/cocacola-latt-grande.png) ;   /* Inserisco un'immagine di backgroung, inserendo l'immagine in questo modo verrà automaticamente ridimenzionata per ogni risoluzione */
+  background-size: cover;  /* scrivo con tre sintassi diverse il fatto che la mia foto di background dovra seguire le dimensioni della pagina*/
+  -o-background-size: cover;
+  -moz-background-size: cover;
+  background-position: center; /* Centriamo l'immagine */
+}
+.cocazero__imm{
+  width: 150px;
+  height: 150px;
+  margin: 0 auto; /* Accentro l'immagine */
+  border-radius: 20px;
+  /* Ecco la sintassi per ottrnere un' immagine di sfondo */
+  background-image: url(Immagini/cocazero.png) ;   /* Inserisco un'immagine di backgroung, inserendo l'immagine in questo modo verrà automaticamente ridimenzionata per ogni risoluzione */
+  background-size: cover;  /* scrivo con tre sintassi diverse il fatto che la mia foto di background dovra seguire le dimensioni della pagina*/
+  -o-background-size: cover;
+  -moz-background-size: cover;
+  background-position: center; /* Centriamo l'immagine */
+}
+.fanta__imm{
+  width: 150px;
+  height: 150px;
+  margin: 0 auto; /* Accentro l'immagine */
+  border-radius: 20px;
+  /* Ecco la sintassi per ottrnere un' immagine di sfondo */
+  background-image: url(Immagini/fanta.png) ;   /* Inserisco un'immagine di backgroung, inserendo l'immagine in questo modo verrà automaticamente ridimenzionata per ogni risoluzione */
+  background-size: cover;  /* scrivo con tre sintassi diverse il fatto che la mia foto di background dovra seguire le dimensioni della pagina*/
+  -o-background-size: cover;
+  -moz-background-size: cover;
+  background-position: center; /* Centriamo l'immagine */
+}
+.estathe-lim__imm{
+  width: 150px;
+  height: 150px;
+  margin: 0 auto; /* Accentro l'immagine */
+  border-radius: 20px;
+  /* Ecco la sintassi per ottrnere un' immagine di sfondo */
+  background-image: url(Immagini/estathe-lim.png) ;   /* Inserisco un'immagine di backgroung, inserendo l'immagine in questo modo verrà automaticamente ridimenzionata per ogni risoluzione */
+  background-size: cover;  /* scrivo con tre sintassi diverse il fatto che la mia foto di background dovra seguire le dimensioni della pagina*/
+  -o-background-size: cover;
+  -moz-background-size: cover;
+  background-position: center; /* Centriamo l'immagine */
+}
+.estathe-pesca__imm{
+  width: 150px;
+  height: 150px;
+  margin: 0 auto; /* Accentro l'immagine */
+  border-radius: 20px;
+  /* Ecco la sintassi per ottrnere un' immagine di sfondo */
+  background-image: url(Immagini/estathe-pesca.png) ;   /* Inserisco un'immagine di backgroung, inserendo l'immagine in questo modo verrà automaticamente ridimenzionata per ogni risoluzione */
+  background-size: cover;  /* scrivo con tre sintassi diverse il fatto che la mia foto di background dovra seguire le dimensioni della pagina*/
+  -o-background-size: cover;
+  -moz-background-size: cover;
+  background-position: center; /* Centriamo l'immagine */
+}
+.the__imm{
+  width: 150px;
+  height: 150px;
+  margin: 0 auto; /* Accentro l'immagine */
+  border-radius: 20px;
+  /* Ecco la sintassi per ottrnere un' immagine di sfondo */
+  background-image: url(Immagini/the.png) ;   /* Inserisco un'immagine di backgroung, inserendo l'immagine in questo modo verrà automaticamente ridimenzionata per ogni risoluzione */
+  background-size: cover;  /* scrivo con tre sintassi diverse il fatto che la mia foto di background dovra seguire le dimensioni della pagina*/
+  -o-background-size: cover;
+  -moz-background-size: cover;
+  background-position: center; /* Centriamo l'immagine */
+}
+
+/*----------------------------------
+               TABLET
+-----------------------------------*/
+@media (min-width: 767px) {       /* Media query tablet */
+  @media (max-width: 1023px) {
+
+    .contenitore-prodotti{  /* Accentro i prodotti */
+      max-width: 750px;
+      height: 100%;
+      margin: 0 auto;
+    }
+
+    .prodotto{
+      margin: 12px;
+    }
+  }
+}
+
+
+/*----------------------------------
+              SMARTPHONE
+-----------------------------------*/
+@media (max-width: 766px) {
+
+  .insegna{
+    width: 300px;
+    height: 130px;
+    margin: 0 auto;
+    /* Ecco la sintassi per ottrnere un' immagine di sfondo */
+    background-image: url(Immagini/ins.png) ;
+    background-size: cover;  /* scrivo con tre sintassi diverse il fatto che la mia foto di background dovra seguire le dimensioni della pagina*/
+    -o-background-size: cover;
+    -moz-background-size: cover;
+    background-position: center; /* Centriamo l'immagine */
+  }
+
+  .main-carousel{padding-bottom: 20px;}
+
+  .carousel-cell{
+    height: 47px;
+    width: 95px;
+    border-radius: 10px;  /*Rendo la cela tonda*/
+    border: 1px solid lightblue;
+  /* Centro il testo al loro interno */
+    line-height: 47px;
+    text-align: center;
+  /*---------------------------------*/
+    margin-right: 10px;
+    font-size: 12px; /* Diminuisco la grandezza del font */
+  }
+
+  .contenitore-prodotti{  /* Accentro i prodotti */
+    max-width: 320px;
+    height: 100%;
+    margin: 0 auto;
+  }
+
+  .prodotto{
+    height: 180px;
+    width: 140px;
+    border-radius: 20px;
+    box-shadow: 2px 2px  12px rgba(0, 0, 0, 0.9);
+    text-align: center;
+    padding: 7px; /* Distanzio un po dal bordo */
+    float: left; /* I prodotti vanno a capo mano mano */
+    margin: 8.9px;
+  }
+
+  .prodotto__nome{
+    margin-top: 5px;
+    padding-bottom: 2.5px;
+    font-size: 12px;
+  }
+
+  .prodotto__desc{
+    font-size: 7px;
+    padding-bottom: 0;
+  }
+
+  .prodotto__box{
+    /* Allineo verticalmente al centro il suo contenuto */
+    display: flex; /* Metto nella stessa riga tutti gli elementi contenuti dall'elemento scelta__content__choise */
+    align-items: center;
+    /*---------------------------------------------------*/
+    width: 125px;
+    height: 35px;
+    border-radius: 15px;
+    margin-top: 5px;
+  }
+
+  .prodotto--sma{
+    width: 100px;
+    height: 100px;
+    margin: 0 auto; /* Accentro l'immagine */
+    border-radius: 10px;
+  }
+
+}
+
+
+
+
+
+
+
+
+
+
+/*-----------------------------------------------------------------------------------------------
+                                HEADER PRODOTTO
+-------------------------------------------------------------------------------------------------*/
+
+.header-prodotto{
+  width: 100%;
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  padding: 30px;
+  display: flex; /* FLEXBOX è una proprietà del css che mi permette di mettere sulla stessa riga tutti gli elementi all'interno di un contenitore, quindi metto nella stessa riga logo, menù e cta (COMODISSIMO)*/
+  margin: 0 auto;
+}
+
+.contenitore-back{width: 50%;}
+
+.contenitore-carrello{width: 50%;}
+
+.back-prodotto{
+  width: 80px;
+  height: 80px;
+  border-radius: 100%;
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 10);
+  /* Ecco la sintassi per ottrnere un' immagine di sfondo */
+  background-image: url(Immagini/indietro.png) ;   /* Inserisco un'immagine di backgroung, inserendo l'immagine in questo modo verrà automaticamente ridimenzionata per ogni risoluzione */
+  background-size: cover;  /* scrivo con tre sintassi diverse il fatto che la mia foto di background dovra seguire le dimensioni della pagina*/
+  -o-background-size: cover;
+  -moz-background-size: cover;
+  background-position: center; /* Centriamo l'immagine */
+}
+
+.carrello-prodotto{
+  width: 80px;
+  height: 80px;
+  border-radius: 100%;
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 10);
+  float: right; /* Mando il carrello tutto a destra */
+  /* Ecco la sintassi per ottrnere un' immagine di sfondo */
+  background-image: url(Immagini/carrello.png) ;   /* Inserisco un'immagine di backgroung, inserendo l'immagine in questo modo verrà automaticamente ridimenzionata per ogni risoluzione */
+  background-size: cover;  /* scrivo con tre sintassi diverse il fatto che la mia foto di background dovra seguire le dimensioni della pagina*/
+  -o-background-size: cover;
+  -moz-background-size: cover;
+  background-position: center; /* Centriamo l'immagine */
+}
+
+
+
+/*----------------------------------
+               TABLET
+-----------------------------------*/
+@media (min-width: 767px) {       /* Media query tablet */
+  @media (max-width: 1023px) {
+    .header-prodotto{
+      padding: 20px;
+    }
+
+    .back-prodotto{
+      width: 70px;
+      height: 70px;
+    }
+
+    .carrello-prodotto{
+      width: 70px;
+      height: 70px;
+    }
+  }
+}
+
+
+/*----------------------------------
+              SMARTPHONE
+-----------------------------------*/
+@media (max-width: 766px) {
+  .header-prodotto{
+    padding: 15px;
+  }
+
+  .back-prodotto{
+    width: 60px;
+    height: 60px;
+  }
+
+  .carrello-prodotto{
+    width: 60px;
+    height: 60px;
+  }
+}
+
+
+/*-----------------------------------------------------------------------------------------------
+                                 HERO PRODOTTO
+-------------------------------------------------------------------------------------------------*/
+.hero-prodotto__imm{
+  position: absolute; /* Voglio posizionarla in alto e voglio che sia fissa in una posizione */
+  width: 100%;
+  height: 50%;
+  border-radius: 50px;
+  box-shadow: 2px 2px  12px rgba(0, 0, 0, 0.9);
+  /* Ecco la sintassi per ottrnere un' immagine di sfondo */
+  background-image: url(Immagini/panficato.jpg) ;   /* Inserisco un'immagine di backgroung, inserendo l'immagine in questo modo verrà automaticamente ridimenzionata per ogni risoluzione */
+  background-size: cover;  /* scrivo con tre sintassi diverse il fatto che la mia foto di background dovra seguire le dimensioni della pagina*/
+  -o-background-size: cover;
+  -moz-background-size: cover;
+  background-position: center; /* Centriamo l'immagine */
+  padding: 0 65px 0 65px;
+}
+
+/*--- Contatore ---*/
+.hero-prodotto__contenitore-contatore{
+  height: 55vh; /* Mi serve che il contatore sia a metà pagina */
+  display: flex;
+  align-items: flex-end; /* Posiziono il contatore sulla base del suo contenitore */
+}
+
+.hero-prodotto__contatore{
+  position: absolute;
+  width: 120px;
+  height: 60px;
+  border-radius: 15px;
+  box-shadow: 1px 1px 10px rgba(0, 0, 0, 1);
+  background: linear-gradient(0deg, rgba(255,255,255,.7), rgba(255,255,255,.97)50%); /* Creo un simpatico sfondo scuro */
+  left: 50%;
+  transform: translateX(-50%); /* left: 50%; translateY(-50%); è un trucco per mettere una cosa centrata orizz. */
+  display: flex; /* Le cose dentro il contatore devono stare sulla stessa riga */
+  align-items: center;
+}
+
+.hero-prodotto__contatore__meno{
+ width: 33%;
+ text-align: center; /* Allineo il testo al centro vert. */
+ cursor: pointer; /* Fa diventare il mouse una manina con l'indice, mooolto carina */
+}
+
+.hero-prodotto__contatore__numero{
+ width: 33%;
+ text-align: center;
+}
+
+.hero-prodotto__contatore__piu{
+ width: 33%;
+ text-align: center;
+ cursor: pointer; /* Fa diventare il mouse una manina con l'indice, mooolto carina */
+}
+
+.hero-prodotto{
+  position: relative; /* Mi serve per mettere il video (o foto) sotto la hero__content, mi serve che sia prima delle altre proprietà della hero */
+  height: 45vh; /* Lo faccodella restnte prte dello schermo */
+  width: 100%;
+  display: flex; /* Uso il FLEXBOX per allineare la hero__content (quindi il contenuto della scatola hero) */
+  align-items: center;
+}
+
+.hero-prodotto__content{
+  text-align: center;
+  margin: 0 auto;
+}
+
+/*--- Riga-1 ---*/
+.hero-prodotto__riga-1{
+  width: 100%;
+  position: relative;
+  z-index: 1;
+  top: 0;
+  padding: 10px 30px 10px 30px;
+  display: flex; /* FLEXBOX è una proprietà del css che mi permette di mettere sulla stessa riga tutti gli elementi all'interno di un contenitore, quindi metto nella stessa riga logo, menù e cta (COMODISSIMO)*/
+  max-width: 1350px; /* Voglio che sia largo come la hero__content se lo volessi più largo basterebbe mettere un max width maggiore*/
+  text-align: center; /* Centro i due testi orizz. */
+  align-items: center; /* Centro i due testi vert. */
+}
+
+.hero-prodotto__riga-1__nome{
+  width: 50%;
+  font-size: 45px;
+}
+
+.hero-prodotto__riga-1__prezzo{
+  width: 50%;
+  font-size: 45px;
+}
+
+
+/*--- Descrizione ---*/
+.hero-prodotto__descrizione{
+  width: 100%;
+  position: relative;
+  z-index: 1;
+  top: 0;
+  padding: 10px 30px 25px 30px;
+  max-width: 1350px; /* Voglio che sia largo come la hero__content se lo volessi più largo basterebbe mettere un max width maggiore*/
+}
+
+.hero-prodotto__descrizione__titolo{
+  font-size: 45px;
+  margin-bottom: 5px
+}
+
+.hero-prodotto__descrizione__testo{
+  font-size: 18px;
+  color: black;
+}
+
+
+/*----------------------------------
+         LAPTOP PICCOLO
+-----------------------------------*/
+
+@media (min-width: 1024px) {
+  @media (max-width: 1400px){
+
+    .hero-prodotto__riga-1{
+      padding: 5px 20px 7.5px 30px;
+    }
+
+    .hero-prodotto__riga-1__nome{
+      font-size: 35px;
+    }
+
+    .hero-prodotto__riga-1__prezzo{
+      font-size: 35px;
+    }
+
+    .hero-prodotto__descrizione{
+      padding: 5px 30px 13px 30px;
+    }
+
+    .hero-prodotto__descrizione__titolo{
+      font-size: 35px;
+      margin-bottom: 0;
+    }
+
+    .hero-prodotto__descrizione__testo{
+      font-size: 16px;
+    }
+  }
+}
+
+/*----------------------------------
+               TABLET
+-----------------------------------*/
+@media (min-width: 767px) {       /* Media query tablet */
+  @media (max-width: 1023px) {
+
+    .hero-prodotto__riga-1{
+      padding: 10px 15px 10px 20px;
+    }
+
+    .hero-prodotto__riga-1__nome{
+      font-size: 30px;
+    }
+
+    .hero-prodotto__riga-1__prezzo{
+      font-size: 30px;
+    }
+
+    .hero-prodotto__descrizione{
+      padding: 10px 15px 15px 20px;
+    }
+
+    .hero-prodotto__descrizione__titolo{
+      font-size: 30px;
+    }
+
+    .hero-prodotto__descrizione__testo{
+      font-size: 14px;
+    }
+
+  }
+}
+
+
+/*----------------------------------
+              SMARTPHONE
+-----------------------------------*/
+@media (max-width: 766px) {
+
+  .hero-prodotto__riga-1{
+    padding: 0 10px 7.5px 15px;
+  }
+
+  .hero-prodotto__riga-1__nome{
+    font-size: 20px;
+  }
+
+  .hero-prodotto__riga-1__prezzo{
+    font-size: 20px;
+  }
+
+  .hero-prodotto__descrizione{
+    padding: 7.5px 10px 12.5px 15px;
+  }
+
+  .hero-prodotto__descrizione__titolo{
+    font-size: 20px;
+  }
+
+  .hero-prodotto__descrizione__testo{
+    font-size: 12px;
+  }
+
+}
+
+
+
+
+/*-----------------------------------------------------------------------------------------------
+                                          CARRELLO
+-------------------------------------------------------------------------------------------------*/
+.carrello{
+  height: 200%; 
+/* ------------------------------------------------------Allineo al centro verticale hero__content, per farlo uso queste definizioni "standard". ------------------------------------------------*/
+  display: flex; /* Uso il FLEXBOX per allineare la hero__content (quindi il contenuto della scatola hero) */
+  width: 100%;
+  align-items: center;
+/* ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+  position: absolute; /* Mi serve per gestire lo z-index */
+  z-index: 0;
+  top: 0;
+  left: 0;
+}
+
+.carrello--pop{
+  z-index: 1; /* Faccio apparire il carrello sopra ad ordine online */
+}
+
+.carrello__content{
+  width: 100%;
+  height: 200%;
+  text-align: center;
+  margin: 0 auto; /* Allineo hero__content anche in orizz. */
+  z-index: 0; /* Metto il contenuto della hero sopra il filtro */
+
+  position: absolute; /* Adesso il menù non è più fisso */
+  top: 0;
+  right: 0; 
+  background: #04919b;
+}
+
+.carrello h2{
+  position: relative;
+  padding-bottom: 10px;
+}
+
+.carrello__prodotto{
+  margin: 0 auto;
+  width: 700px;
+  height: 200px;
+  margin-top: 30px;
+  padding: 25px;
+  /* Allineo verticalmente al centro il suo contenuto */
+  display: flex; /* Metto nella stessa riga tutti gli elementi contenuti dall'elemento scelta__content__choise */
+  align-items: center;
+  /*---------------------------------------------------*/
+  border: 1px solid lightgrey;
+  box-shadow: 10px 10px  20px rgba(0, 0, 0, 0.5);
+  border-radius: 20px;
+  background: linear-gradient(0deg, rgba(0,0,0,.2), rgba(0,0,0,0.1)100%);  /* Creo un simpatico sfondo scuro nei bottoni */
+}
+
+
+.carrello__prodotto__imm{
+  width: 200px;
+  height: 150px;
+  margin: 0 auto;
+  border-radius: 20px;
+}
+
+.carrello__prodotto__info{
+  height: 150px;
+  width: 60%;
+}
+
+.carrello__prodotto__nome{
+  width: 100%;
+  height: 35%;
+  font-size: 30px;
+  font-weight: 900;
+  color: orange;
+  text-shadow: 1px 1px 2px black;
+  padding: 10px;
+}
+
+.carrello__prodotto__prezzo-quant{
+  width: 100%;
+  height: 25%;
+  display: flex;
+  font-size: 25px;
+  font-weight: 700;
+  color: lightgrey;
+  text-shadow: 1px 1px 2px black;
+  align-items: center;
+}
+
+.carrello__prodotto__quant{
+  width: 40%;
+  margin-left: 41px;
+}
+
+
+.carrello__prodotto__prezzo{
+  width: 40%;
+  margin-right: 41px;
+}
+
+.carrello__prodotto__num-rim{
+  width: 100%;
+  height: 30%;
+  display: flex;
+  align-items: center;
+  font-size: 25px;
+  font-weight: 700;
+  color: orange;
+  text-shadow: 1px 1px 2px black;
+  margin-top: 10px;
+
+}
+
+.carrello__prodotto__num{
+  width: 35%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  border-radius: 2px;
+  background: linear-gradient(0deg, rgba(0,0,0,.3), rgba(0,0,0,0.3)100%);
+  border: 1px solid lightgrey;
+  margin-left: 10%;
+}
+
+.carrello__prodotto__num__meno{
+  width: 30%;
+  height:  100%;
+  border: 1px solid lightgrey;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.carrello__prodotto__num__numero{
+  width: 40%;
+  height: 100%;
+  border: 1px solid lightgrey;
+  padding: 10px;
+}
+
+.carrello__prodotto__num__piu{
+  width: 30%;
+  height: 100%;
+  border: 1px solid lightgrey;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.carrello__prodotto__rim{
+  width: 35%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  border-radius: 2px;
+  border: 2px solid lightgrey;
+  background: linear-gradient(0deg, rgba(0,0,0,.3), rgba(0,0,0,0.3)100%);
+  margin-left: 15%;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.separatore{
+  display: block;
+  position: relative;
+  width: 100%;
+  height: 1.5px;
+  background: lightgrey;
+  opacity: 0.3;
+  max-width: 1000px;
+  left: 50%;
+  transform: translatex(-50%);
+}
+
+.carrello__totale{
+  padding: 15px;
+  width: 100%;
+  position: relative;
+  display: flex; /* FLEXBOX è una proprietà del css che mi permette di mettere sulla stessa riga tutti gli elementi all'interno di un contenitore, quindi metto nella stessa riga logo, menù e cta (COMODISSIMO)*/
+  max-width: 900px; /* Voglio che sia largo come la hero__content se lo volessi più largo basterebbe mettere un max width maggiore*/
+  text-align: center; /* Centro i due testi orizz. */
+  align-items: center; /* Centro i due testi vert. */
+  margin: 0 auto;
+}
+
+.carrello__totale__testo{width: 50%;}
+
+.carrello__totale__prezzo{width: 50%;}
+
+.carrello__button{
+  padding: 15px 40px; /* Con questa sintassi vado a definire un paddind sopre e sotto di 18 e dx sx di 28 */
+  background: orange;
+  color: 	#fff;
+  display: inline-block; /* Per applicare il padding a tutto il link del bottone */
+  border-radius: 20px;
+  font-size: 35px;
+  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.2);
+}
+
+
+
+
+
+
+/*-----------------------------------------------------------------------------------------------
+                                          HELPERS
+-------------------------------------------------------------------------------------------------*/
+/* le classi HELPER sono classida applicare ovunque servano in modo molto velocemente */
+/*Metto gli helpers in fondo così che possano sovrascrivere qualsiasi altro margine definito nel file di testo */
+
+/* MARGIN-TOP */
+.mt-00{margin-top: 10px;}
+.mt-0{margin-top: 25px;}
+.mt-1{margin-top: 50px;}
+.mt-2{margin-top: 100px;}
+.mt-3{margin-top: 150px;}
+.mt-4{margin-top: 200px;}
+
+/* Testi colorati */
+.tw{color: #fff;}
+.to{color: orange;}
+.tlg{color: lightgrey;}
+.tb{color: black;}
+
+/* Ombreggiatura dei testi */
+.ts-1{text-shadow: 1px 1px 2px black;} /* Text shadow per i paragrafi */
+
+.ts-9{text-shadow: 0.5px 0.5px 5px lightblue;} /* Testo brillante celeste */
+.ts-10{text-shadow: 0.5px 0.5px 1px black;} /* Per intestazioni nere */
+
+/* Font Particolari*/
+/* .font-tel{}  font speciale per numeri di telefono */
+
+
+
+.head-abs{position: absolute;} /* Helpers per fermare l'eader e non portarselo dietro tutto il tempo */
+
+/* EFFETTO PULSANTE */
+.border-b{border: 1px solid black;}
+
+
+
+.disp-none{display: none;}
+
+
+/*---------------------------------------
+              CLEAR FIX
+----------------------------------------*/
+/* Il clear fix serve a pulire il float, senza questa stringa di codice
+l'header non riesce ad occupare tutto lo spazio disponoibile */
+
+.clearfix:after {
+  visibility: hidden;
+  display: block;
+  font-size: 0;
+  content: " ";
+  clear: both;
+  height: 0;
+}
+* html .clearfix             { zoom: 1; } /* IE6 */
+*:first-child+html .clearfix { zoom: 1; } /* IE7 */
+
+
+/*---------------------------------------
+              BORDER-BOX
+----------------------------------------*/
+/* Uso la proprietà boxsizing settata come border box.
+Vuol dire che il padding verrà applicato senza andare a modificare la larghezza
+dell'elemento quindi verrà applicato internamente all'elemento.*/
+
+*,
+*:before,
+*:after{
+  -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+      box-sizing: border-box;
+}

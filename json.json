@@ -1,0 +1,241 @@
+{
+    "Prodotti" : [
+        {
+            "nome"  : "Panficato_200g",
+            "prezzo" : "6€",
+            "quantita" : "1"
+    
+        },
+        {
+            "nome"  : "Panficato_400g",
+            "prezzo" : "9€",
+            "quantita" : "1"
+        },
+        {
+            "nome"  : "Tozzetti",
+            "prezzo" : "6€",
+            "quantita" : "1"
+        },
+        {
+            "nome"  : "Gnocchetti ai fichi",
+            "prezzo" : "6€",
+            "quantita" : "1"
+        },
+        {
+            "nome"  : "Gnocchetti al limone",
+            "prezzo" : "6€",
+            "quantita" : "1"
+        },
+        {
+            "nome"  : "Gnocchetti al cioccolato",
+            "prezzo" : "6€",
+            "quantita" : "1"
+        },
+        {
+            "nome"  : "Cantucci",
+            "prezzo" : "6€",
+            "quantita" : "1"
+        },
+        {
+            "nome"  : "Cantucci ai fichi e cioccolato",
+            "prezzo" : "6€",
+            "quantita" : "1"
+        },
+        {
+            "nome"  : "Rusticini",
+            "prezzo" : "6€",
+            "quantita" : "1"
+        },
+        {
+            "nome"  : "Cornetto vuoto",
+            "prezzo" : "1.3€",
+            "quantita" : "1"
+        },
+        {
+            "nome"  : "Cornetto alla crema",
+            "prezzo" : "1.5€",
+            "quantita" : "1"
+        },
+        {
+            "nome"  : "Cornetto alla Nutella",
+            "prezzo" : "6€",
+            "quantita" : "1"
+        },
+        {
+            "nome"  : "Cornetto alla marmellata",
+            "prezzo" : "1.5€",
+            "quantita" : "1"
+        },
+        {
+            "nome"  : "Cornetto al pistaccchio",
+            "prezzo" : "1.8€",
+            "quantita" : "1"
+        },
+        {
+            "nome"  : "Strudel alle mele",
+            "prezzo" : "1.8€",
+            "quantita" : "1"
+        },
+        {
+            "nome"  : "Sfoglia alle mele",
+            "prezzo" : "1.8€",
+            "quantita" : "1"
+        },
+        {
+            "nome"  : "Sfoglia alla crema",
+            "prezzo" : "1.8€",
+            "quantita" : "1"
+        },
+        {
+            "nome"  : "Saccottino",
+            "prezzo" : "1.8€",
+            "quantita" : "1"
+        },
+        {
+            "nome"  : "Treccia al cioccolato",
+            "prezzo" : "1.8€",
+            "quantita" : "1"
+        },
+        {
+            "nome"  : "Sbriciolona alla crema",
+            "prezzo" : "3€",
+            "quantita" : "1"
+        },
+        {
+            "nome"  : "Sbriciolona alla Nutella",
+            "prezzo" : "3€",
+            "quantita" : "1"
+        },
+        {
+            "nome"  : "Occhio di bue alla marmellata di albicocche",
+            "prezzo" : "1.3€",
+            "quantita" : "1"
+        },
+        {
+            "nome"  : "Occhio di bue al cioccolato",
+            "prezzo" : "1.3€",
+            "quantita" : "1"
+        },
+        {
+            "nome"  : "Crostata di marmellata di albicocche",
+            "prezzo" : "1.5€",
+            "quantita" : "1"
+        },
+        {
+            "nome"  : "Crostata di marmellata di amarene",
+            "prezzo" : "1.5€",
+            "quantita" : "1"
+        },
+        {
+            "nome"  : "Caffe",
+            "prezzo" : "1€",
+            "quantita" : "1"
+        },
+        {
+            "nome"  : "caffe macchiato",
+            "prezzo" : "1.3€",
+            "quantita" : "1"
+        },
+        {
+            "nome"  : "Caffe americano",
+            "prezzo" : "1.5€",
+            "quantita" : "1"
+        },
+        {
+            "nome"  : "Caffe",
+            "prezzo" : "1€",
+            "quantita" : "1"
+        },
+        {
+            "nome"  : "Caffe decaffeinato",
+            "prezzo" : "1.5€",
+            "quantita" : "1"
+        },
+        {
+            "nome"  : "Cappuccino",
+            "prezzo" : "1€",
+            "quantita" : "1"
+        },
+        {
+            "nome"  : "Latte macchiato",
+            "prezzo" : "1€",
+            "quantita" : "1"
+        },
+        {
+            "nome"  : "ginseng",
+            "prezzo" : "1€",
+            "quantita" : "1"
+        },
+        {
+            "nome"  : "Ginseng in tazza grande",
+            "prezzo" : "1€",
+            "quantita" : "1"
+        },
+        {
+            "nome"  : "Orzo",
+            "prezzo" : "1€",
+            "quantita" : "1"
+        },
+        {
+            "nome"  : "tea",
+            "prezzo" : "1€",
+            "quantita" : "1"
+        },  
+        {
+            "nome"  : "Acqua 500ml",
+            "prezzo" : "1€",
+            "quantita" : "1"
+        },
+        {
+            "nome"  : "Acqua 1.5l",
+            "prezzo" : "2.5€",
+            "quantita" : "1"
+        },
+        {
+            "nome"  : "Cocacola",
+            "prezzo" : "1€",
+            "quantita" : "1"
+        },
+        {
+            "nome"  : "Cocacola zero",
+            "prezzo" : "1€",
+            "quantita" : "1"
+        },
+        {
+            "nome"  : "Fanta",
+            "prezzo" : "1€",
+            "quantita" : "1"
+        },
+        {
+            "nome"  : "Lemon soda",
+            "prezzo" : "1€",
+            "quantita" : "1"
+        },
+        {
+            "nome"  : "Chinotto",
+            "prezzo" : "1€",
+            "quantita" : "1"
+        },
+        {
+            "nome"  : "Estathe alla pesca",
+            "prezzo" : "1€",
+            "quantita" : "1"
+        },
+        {
+            "nome"  : "Estathe al limone",
+            "prezzo" : "1€",
+            "quantita" : "1"
+        },
+        {
+            "nome"  : "Birra 33cl",
+            "prezzo" : "3.5€",
+            "quantita" : "1"
+        },{
+            "nome"  : "Birra 66cl",
+            "prezzo" : "5€",
+            "quantita" : "1"
+        }
+        
+    ]
+    
+}

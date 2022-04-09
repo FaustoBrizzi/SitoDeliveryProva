@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Delivery</title>
+
+  <!-- CSS reset -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css" integrity="sha512-NmLkDIU1C/C88wi324HBc+S2kLhi08PN5GDeUVVVC/BVt/9Izdsc9SVeVfA1UZbY3sHUlDSyRXhCzHfr6hmPPw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <link rel="stylesheet" href="style.css">  <!-- Collega questo file html al file di stile style.css -->
+
+  <!-- Css per il FLICKITY, arriva da flickity cdnjs -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flickity/2.2.2/flickity.min.css" integrity="sha512-BiFZ6oflftBIwm6lYCQtQ5DIRQ6tm02svznor2GYQOfAlT3pnVJ10xCrU3XuXnUrWQ4EG8GKxntXnYEdKY0Ugg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- Lo script per l'animazione SCROLLREVEAL -->
+  <script src="https://unpkg.com/scrollreveal@4.0.0/dist/scrollreveal.min.js"></script>
+
+  <!-- Ho messo il font inter da google font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+
+<!--............................................................................................
+                                              HEADER
+...............................................................................................-->
+  <div class="header">
+    <a href="index.html">
+      <div class="logo"></div>
+    </a>
+    <ul class="menu">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="ordine.html">Ordine</a></li>
+      <li><a href="">Staff</a></li>
+    </ul>
+    <div class="hamburger">   <!-- Creo l'icona del menù a tendina per smartphone -->
+      <span class="asta-1"></span>
+      <span class="asta-2"></span>
+      <span class="asta-3"></span>
+    </div>
+  </div>
+
+  <!--............................................................................................
+                                          CARRELLO
+  ...............................................................................................-->
+
+  <div class="carrello">
+    <div class="carrello__content">
+      <h2 class="med-text to ts-1">Carrello</h2>
+      <span class="separatore"></span>
+      <div id="carrello__prodotto">
+          <div id="carrello__prodotto__imm"></div>
+          <div id="carrello__prodotto__info">
+            <div id="carrello__prodotto__nome">PANFICATO</div>
+            <div id="carrello__prodotto__prezzo-quant">
+              <div id="carrello__prodotto__quant">Quantità 1</div>
+              <div id="carrello__prodotto__prezzo">6€</div>
+            </div>
+            <div id="carrello__prodotto__num-rim">
+              <div id="carrello__prodotto__num">
+                <div id="carrello__prodotto__num__meno">-</div>
+                <div id="carrello__prodotto__num__numero">1</div>
+                <div id="carrello__prodotto__num__piu">+</div>
+              </div>
+              <div id="carrello__prodotto__rim">RIMUOVI</div>
+            </div>
+          </div>
+      </div>
+      <div id="carrello__prodotto">
+          <div id="carrello__prodotto__imm__caffe"></div>
+          <div id="carrello__prodotto__info">
+            <div id="carrello__prodotto__nome">CAFFE</div>
+            <div id="carrello__prodotto__prezzo-quant">
+              <div id="carrello__prodotto__quant">Quantità 1</div>
+              <div id="carrello__prodotto__prezzo">1.5€</div>            
+            </div>
+            <div id="carrello__prodotto__num-rim">
+              <div id="carrello__prodotto__num">
+                <div id="carrello__prodotto__num__meno">-</div>
+                <div id="carrello__prodotto__num__numero">1</div>
+                <div id="carrello__prodotto__num__piu">+</div>
+              </div>
+              <div id="carrello__prodotto__rim">RIMUOVI</div>
+            </div>
+          </div>
+      </div>
+
+
+
+      <span class="separatore mt-1"></span>
+      <div class="carrello__totale">
+        <div class="carrello__totale__testo to ts-1 normal-text fw700">
+          Totale
+        </div>
+        <div class="carrello__totale__prezzo to ts-1 normal-text fw700">
+          EUR 0
+        </div>
+      </div>
+      <span class="separatore"></span>
+      <div class="carrello__button zoom-delay mt-0">PROCEDI CON L'ORDINE</div>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+    <script src="script.js"></script> <!--  Collego il foglio in cui scrivo il programma in javascript a quello di html.  -->
+
+    <!--............................................................................................
+                                                JQUERY
+    ...............................................................................................-->
+    <!-- Questa è l'inclusione di jquery ottimizzato -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+
+
+    <script type="text/javascript">  /* Tag script */
+
+      $(document).ready(function(){   /* DOCUMENT READY serve per far funzionare bene il jquery, ossia lo esegue solo quando sono già stati caricati tutti ijavascript */
+
+        /*EVENTI ON CLICK */
+
+        $(".hamburger").on('click', function() {  /* Quando si clicca su hamburger si scatena l'evento */
+
+            $(".asta-1").toggleClass("asta-1--rotation"); /* Usando il metodo TOGGLECLASS ottengo proprio un effetto di bottone, infatti toggleClass serve proprio ad aggiungere e rimuovere la classe dall'elemento puntato */
+            $(".asta-2").toggleClass("asta-2--out");
+            $(".asta-3").toggleClass("asta-3--rotation");
+            $(".menu").toggleClass("menu--open"); /* toggleClass serve ad aggiungere o rimuovere una classe ad un elemento in questo caso gli elementi
+                                                    sono quelli puntati dalla classe hamburger e la classe che verra aggiunta o rimossa è menu--open.
+                                                    La classe menu--open verrà poi definita nel file di stile. */
+        });
+
+        ScrollReveal().reveal('.reveal', { distance: '100px', duration: 1500, easing: 'cubic-bezier(.215, .61, .355, 1)', interval: 600 }); /* Codice javascript di SCROLLREVEAL che applica all'elemento puntato dalla classe reveal un fade in veloce */
+                                          /* Aggiungendo { distance: '100px' } il testo arriva da sotto */
+                                          /* Aggiungendo { duration: 1500 } gli aumento un pò la durata*/
+                                          /* Aggiungendo { easing: 'cubic-bezier(.215, .61, .355, 1)' } posso modificarli la velocità */
+                                          /* Aggiungendo { interval: 600 } creo un ritardo tra le animazioni di elementi che sono sulla stessa righa, se per esempio ho due colonne avrò due fade in con un lieve ritardo */
+                                          /* Adesso applicherò la classe reveal all'elemento che voglio animare */
+
+        ScrollReveal().reveal('.zoom', { duration: 1500, easing: 'cubic-bezier(.215, .61, .355, 1)', interval: 200, scale: 0.65}); /* Creo uno scrollreveal zoom che da l'effetto di apparizione agli elementi a cui voglio applicarlo */
+                                          /* Aggiungendo {scale: 0.65} andrò a scalare l'elemento in questo caso lo rimpicciolisco */
+
+        ScrollReveal().reveal('.zoom-delay', { duration: 1500, easing: 'cubic-bezier(.215, .61, .355, 1)', delay: 1000, scale: 0.65}); /* Creo uno scrollreveal zoom-delay che agiunge allo zoom di prima un ritardo */
+
+
+
+
+
+      });
+
+
+
+    </script>
+
+
+  </body>
+  </html>

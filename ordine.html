@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Delivery</title>
+
+  <!-- CSS reset -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css" integrity="sha512-NmLkDIU1C/C88wi324HBc+S2kLhi08PN5GDeUVVVC/BVt/9Izdsc9SVeVfA1UZbY3sHUlDSyRXhCzHfr6hmPPw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <link rel="stylesheet" href="style.css">  <!-- Collega questo file html al file di stile style.css -->
+
+  <!-- Css per il FLICKITY, arriva da flickity cdnjs -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flickity/2.3.0/flickity.min.css" integrity="sha512-B0mpFwHOmRf8OK4U2MBOhv9W1nbPw/i3W1nBERvMZaTWd3+j+blGbOyv3w1vJgcy3cYhzwgw1ny+TzWICN35Xg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- Lo script per l'animazione SCROLLREVEAL -->
+  <script src="https://unpkg.com/scrollreveal@4.0.0/dist/scrollreveal.min.js"></script>
+
+  <!-- Ho messo il font inter da google font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
+  <link rel="icon" href="Immagini/logo.png">
+
+</head>
+
+<body>
+
+
+<!--............................................................................................
+                                              HEADER
+...............................................................................................-->
+  <div class="header">
+    <a href="index.html">
+      <div class="logo"></div>
+    </a>    
+    <ul class="menu">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="">Staff</a></li>
+      <li><a href="">Chi siamo</a></li>
+      <li class="menu-carrello"><a>Carrello</a></li>
+    </ul>
+    <div class="hamburger">   <!-- Creo l'icona del menù a tendina per smartphone -->
+      <span class="asta-1"></span>
+      <span class="asta-2"></span>
+      <span class="asta-3"></span>
+    </div>
+  </div>
+
+
+
+  <!--............................................................................................
+                                          ORDINE
+  ...............................................................................................-->
+ <!-- Finestra Carrello -->
+  <div class="contenitore-finestra-cart">
+    <div class="finestra-cart">
+      <div class="finestra-cart__back" id="qui"></div>
+      <div class="finestra-cart__content">
+        <h2 class="normal-text to ts-1">Carrello</h2>
+        <span class="separatore"></span>
+        <div class="finestra-cart__contenitore-prodotto">
+          
+        </div>
+
+        
+
+        <span class="separatore mt-00"></span>
+        <div class="finestra-cart__totale">
+          <div class="finestra-cart__totale__testo to ts-1">Totale</div>
+          <div class="finestra-cart__totale__prezzo to ts-1">Euro 0</div>
+        </div>
+        <span class="separatore"></span>
+        <div class="finestra-cart__button">APRI IL CARRELLO</div>
+      </div>
+    </div>
+  </div>
+  <!-- Carrello -->
+  <div class="carrello">
+    <div class="carrello__content">
+      <h2 class="med-text to ts-1 mt-3">Carrello</h2>
+      <span class="separatore"></span>
+      <div class="carrello__contenitore-prodotto">
+        
+      </div>
+      
+      
+
+
+
+      <span class="separatore mt-1"></span>
+      <div class="carrello__totale">
+        <div class="carrello__totale__testo to ts-1 normal-text fw700">Totale</div>
+        <div class="carrello__totale__prezzo to ts-1 normal-text fw700">EUR 0</div>
+      </div>
+      <span class="separatore"></span>
+      <div class="carrello__button zoom-delay mt-0">PROCEDI CON L'ORDINE</div>
+    </div>
+  </div>
+
+
+
+  
+  <!-- Ordine On Line -->
+  <div class="ordine-online">
+    <div class="ordine-online__content">
+      <div class="insegna mt-2"></div>
+      <!-- Slider -->
+      <div class="ordine-online__slider mt-1">
+        <div class="main-carousel" data-flickity='{ "cellAlign": "left", "contain": true }'>
+          <div class="carousel-cell cell-on tw ts-1">
+            <div class="carousel-cell__content">Popolari</div>
+          </div>
+          <div class="carousel-cell tw ts-1">
+            <div class="carousel-cell__content">Prodotti tipici</div>
+          </div>
+          <div class="carousel-cell tw ts-1">
+            <div class="carousel-cell__content">Colazione</div>
+          </div>
+          <div class="carousel-cell tw ts-1">
+            <div class="carousel-cell__content">Pizze</div>
+          </div>
+          <div class="carousel-cell tw ts-1">
+            <div class="carousel-cell__content">Focacce ripiene</div>
+          </div>
+          <div class="carousel-cell tw ts-1">
+            <div class="carousel-cell__content">Bevande</div>
+          </div>
+          <div class="carousel-cell tw ts-1">
+            <div class="carousel-cell__content tw ts-1">Torte</div>
+          </div>
+          <div class="carousel-cell tw ts-1">
+            <div class="carousel-cell__content tw ts-1">Dolci</div>
+          </div>
+          <div class="carousel-cell tw ts-1">
+            <div class="carousel-cell__content tw ts-1">Prodotti festivi</div>
+          </div>
+        </div>
+      </div>
+      <!-- Prodotti -->
+      <div class="contenitore-prodotti"> 
+        
+        <div class="prodotto">
+          <a href="panficato-200g.html">
+            <img src="Immagini/panficato.jpg" class="immagine-prodotto prodotto--sma ">
+          </a>
+          <h3 class="prodotto__nome to ts-1">Panficato 200g</h3>
+          <div class="prodotto__box">
+            <div class="prodotto__box__sub normal-text tb">-</div>
+            <div class="prodotto__box__centro">
+              <div class="prodotto__box__centro__riga1">
+                <div class="prodotto__box__Qt">
+                  <div class="prodotto__box__Qt__testo tb">Qt.</div>
+                  <div class="prodotto__box__Qt__numero tb">1</div>  
+                </div>
+                <div class="prodotto__box__prezzo">
+                  <div class="prodotto__box__prezzo__testo">€</div>
+                  <div class="prodotto__box__prezzo__numero">6</div>
+                </div>
+              </div>  
+              <div class="prodotto__box__centro__riga2">
+                <div class="prodotto__box__cart border-b tw ts-1">Aggiungi<br>al carrello</div>
+              </div>           
+            </div>
+            <div class="prodotto__box__add normal-text tb">+</div>
+          </div>          
+        </div>
+ 
+        <div class="prodotto">
+          <a href="panficato-400g.html">
+            <img src="Immagini/panficato.jpg" class="immagine-prodotto prodotto--sma">
+          </a>
+          <h3 class="prodotto__nome to ts-1">Panficato 400g</h3>
+          <div class="prodotto__box">
+            <div id="panficato400meno" class="prodotto__box__sub normal-text tb">-</div>
+            <div class="prodotto__box__centro">
+              <div class="prodotto__box__centro__riga1">
+                <div class="prodotto__box__Qt">
+                  <div class="prodotto__box__Qt__testo tb">Qt.</div>
+                  <div id="panficato400numero" class="prodotto__box__Qt__numero tb">1</div>  
+                </div>
+                <div class="prodotto__box__prezzo">
+                  <div class="prodotto__box__prezzo__testo">€</div>
+                  <div id="panficato400prezzo" class="prodotto__box__prezzo__numero">10</div>
+                </div>
+              </div>  
+              <div class="prodotto__box__centro__riga2">
+                <div id="panficato400cart" class="prodotto__box__cart border-b tw ts-1">Aggiungi<br>al carrello</div>
+              </div>           
+            </div>
+            <div id="panficato400piu"class="prodotto__box__add normal-text tb">+</div>
+          </div>          
+        </div>
+
+
+        <div class="prodotto">
+          <a href="gnocchetti-fichi.html">
+            <img src="Immagini/gnocchetti-fichi.JPG" class="immagine-prodotto prodotto--sma">
+          </a>
+          <h3 class="prodotto__nome to ts-1">Gnocchetti fichi</h3>
+          <div class="prodotto__box">
+            <div class="prodotto__box__sub normal-text tb">-</div>
+            <div class="prodotto__box__centro">
+              <div class="prodotto__box__centro__riga1">
+                <div class="prodotto__box__Qt">
+                  <div class="prodotto__box__Qt__testo tb">Qt.</div>
+                  <div class="prodotto__box__Qt__numero tb">1</div>  
+                </div>
+                <div class="prodotto__box__prezzo">
+                  <div class="prodotto__box__prezzo__testo">€</div>
+                  <div class="prodotto__box__prezzo__numero">6</div>
+                </div>
+              </div>  
+              <div class="prodotto__box__centro__riga2">
+                <div class="prodotto__box__cart border-b tw ts-1">Aggiungi<br>al carrello</div>
+              </div>           
+            </div>
+            <div class="prodotto__box__add normal-text tb">+</div>
+          </div>          
+        </div>
+
+        <div class="prodotto">
+          <a href="gnocchetti-limone.html">
+            <img src="Immagini/gnocchetti-limone.JPG" class="immagine-prodotto prodotto--sma">
+          </a>
+          <h3 class="prodotto__nome to ts-1">Gnocchetti limone</h3>
+          <div class="prodotto__box">
+            <div class="prodotto__box__sub normal-text tb">-</div>
+            <div class="prodotto__box__centro">
+              <div class="prodotto__box__centro__riga1">
+                <div class="prodotto__box__Qt">
+                  <div class="prodotto__box__Qt__testo tb">Qt.</div>
+                  <div class="prodotto__box__Qt__numero tb">1</div>  
+                </div>
+                <div class="prodotto__box__prezzo">
+                  <div class="prodotto__box__prezzo__testo">€</div>
+                  <div class="prodotto__box__prezzo__numero">6</div>
+                </div>
+              </div>  
+              <div class="prodotto__box__centro__riga2">
+                <div class="prodotto__box__cart border-b tw ts-1">Aggiungi<br>al carrello</div>
+              </div>           
+            </div>
+            <div class="prodotto__box__add normal-text tb">+</div>
+          </div>          
+        </div>
+
+        <div class="prodotto">
+          <a href="gnocchetti-cioccolato.html">
+            <img src="#" class="immagine-prodotto prodotto--sma">
+          </a>
+          <h3 class="prodotto__nome to ts-1">Gnocchetti al ciocc.</h3>
+          <div class="prodotto__box">
+            <div class="prodotto__box__sub normal-text tb">-</div>
+            <div class="prodotto__box__centro">
+              <div class="prodotto__box__centro__riga1">
+                <div class="prodotto__box__Qt">
+                  <div class="prodotto__box__Qt__testo tb">Qt.</div>
+                  <div class="prodotto__box__Qt__numero tb">1</div>  
+                </div>
+                <div class="prodotto__box__prezzo">
+                  <div class="prodotto__box__prezzo__testo">€</div>
+                  <div class="prodotto__box__prezzo__numero">6</div>
+                </div>
+              </div>  
+              <div class="prodotto__box__centro__riga2">
+                <div class="prodotto__box__cart border-b tw ts-1">Aggiungi<br>al carrello</div>
+              </div>           
+            </div>
+            <div class="prodotto__box__add normal-text tb">+</div>
+          </div>          
+        </div>
+
+
+        <div class="prodotto">
+          <a href="cantucci.html">
+            <img src="Immagini/cantucci.JPG" class="immagine-prodotto prodotto--sma">
+          </a>
+          <h3 class="prodotto__nome to ts-1">Cantucci Gigliesi</h3>
+          <div class="prodotto__box">
+            <div class="prodotto__box__sub normal-text tb">-</div>
+            <div class="prodotto__box__centro">
+              <div class="prodotto__box__centro__riga1">
+                <div class="prodotto__box__Qt">
+                  <div class="prodotto__box__Qt__testo tb">Qt.</div>
+                  <div class="prodotto__box__Qt__numero tb">1</div>  
+                </div>
+                <div class="prodotto__box__prezzo">
+                  <div class="prodotto__box__prezzo__testo">€</div>
+                  <div class="prodotto__box__prezzo__numero">6</div>
+                </div>
+              </div>  
+              <div class="prodotto__box__centro__riga2">
+                <div class="prodotto__box__cart border-b tw ts-1">Aggiungi<br>al carrello</div>
+              </div>           
+            </div>
+            <div class="prodotto__box__add normal-text tb">+</div>
+          </div>          
+        </div>
+
+        <div class="prodotto">
+          <a href="cantucci-fichi.html">
+            <img src="Immagini/cantucci-fichi.jpg" class="immagine-prodotto prodotto--sma">
+          </a>
+          <h3 class="prodotto__nome to ts-1">Cant. fichi ciocc.</h3>
+          <div class="prodotto__box">
+            <div class="prodotto__box__sub normal-text tb">-</div>
+            <div class="prodotto__box__centro">
+              <div class="prodotto__box__centro__riga1">
+                <div class="prodotto__box__Qt">
+                  <div class="prodotto__box__Qt__testo tb">Qt.</div>
+                  <div class="prodotto__box__Qt__numero tb">1</div>  
+                </div>
+                <div class="prodotto__box__prezzo">
+                  <div class="prodotto__box__prezzo__testo">€</div>
+                  <div class="prodotto__box__prezzo__numero">6</div>
+                </div>
+              </div>  
+              <div class="prodotto__box__centro__riga2">
+                <div class="prodotto__box__cart border-b tw ts-1">Aggiungi<br>al carrello</div>
+              </div>           
+            </div>
+            <div class="prodotto__box__add normal-text tb">+</div>
+          </div>          
+        </div>
+
+        <div class="prodotto">
+          <a href="tozzetti.html">
+            <img src="Immagini/tozzetti.JPG" class="immagine-prodotto prodotto--sma">
+          </a>
+          <h3 class="prodotto__nome to ts-1">Tozzetti</h3>
+          <div class="prodotto__box">
+            <div class="prodotto__box__sub normal-text tb">-</div>
+            <div class="prodotto__box__centro">
+              <div class="prodotto__box__centro__riga1">
+                <div class="prodotto__box__Qt">
+                  <div class="prodotto__box__Qt__testo tb">Qt.</div>
+                  <div class="prodotto__box__Qt__numero tb">1</div>  
+                </div>
+                <div class="prodotto__box__prezzo">
+                  <div class="prodotto__box__prezzo__testo">€</div>
+                  <div class="prodotto__box__prezzo__numero">6</div>
+                </div>
+              </div>  
+              <div class="prodotto__box__centro__riga2">
+                <div class="prodotto__box__cart border-b tw ts-1">Aggiungi<br>al carrello</div>
+              </div>           
+            </div>
+            <div class="prodotto__box__add normal-text tb">+</div>
+          </div>          
+        </div>
+
+        <div class="prodotto">
+          <a href="rusticini.html">
+            <img src="Immagini/Rusticini.JPG" class="immagine-prodotto prodotto--sma">
+          </a>
+          <h3 class="prodotto__nome to ts-1">Rusticini</h3>
+          <div class="prodotto__box">
+            <div class="prodotto__box__sub normal-text tb">-</div>
+            <div class="prodotto__box__centro">
+              <div class="prodotto__box__centro__riga1">
+                <div class="prodotto__box__Qt">
+                  <div class="prodotto__box__Qt__testo tb">Qt.</div>
+                  <div class="prodotto__box__Qt__numero tb">1</div>  
+                </div>
+                <div class="prodotto__box__prezzo">
+                  <div class="prodotto__box__prezzo__testo">€</div>
+                  <div class="prodotto__box__prezzo__numero">6</div>
+                </div>
+              </div>  
+              <div class="prodotto__box__centro__riga2">
+                <div class="prodotto__box__cart border-b tw ts-1">Aggiungi<br>al carrello</div>
+              </div>           
+            </div>
+            <div class="prodotto__box__add normal-text tb">+</div>
+          </div>          
+        </div>
+
+        <div class="prodotto">
+          <a href="caffe.html">
+            <img src="Immagini/caffe.png" class="immagine-prodotto prodotto--sma">
+          </a>
+          <h3 class="prodotto__nome to ts-1">Caffè</h3>
+          <div class="prodotto__box">
+            <div class="prodotto__box__sub normal-text tb">-</div>
+            <div class="prodotto__box__centro">
+              <div class="prodotto__box__centro__riga1">
+                <div class="prodotto__box__Qt">
+                  <div class="prodotto__box__Qt__testo tb">Qt.</div>
+                  <div class="prodotto__box__Qt__numero tb">1</div>  
+                </div>
+                <div class="prodotto__box__prezzo">
+                  <div class="prodotto__box__prezzo__testo">€</div>
+                  <div class="prodotto__box__prezzo__numero">1</div>
+                </div>
+              </div>  
+              <div class="prodotto__box__centro__riga2">
+                <div class="prodotto__box__cart border-b tw ts-1">Aggiungi<br>al carrello</div>
+              </div>           
+            </div>
+            <div class="prodotto__box__add normal-text tb">+</div>
+          </div>          
+        </div>
+
+        <div class="prodotto">
+          <a href="caffe-macchiato.html">
+            <img src="Immagini/caffe-macchiato.png" class="immagine-prodotto prodotto--sma">
+          </a>
+          <h3 class="prodotto__nome to ts-1">Caffè macchiato</h3>
+          <div class="prodotto__box">
+            <div class="prodotto__box__sub normal-text tb">-</div>
+            <div class="prodotto__box__centro">
+              <div class="prodotto__box__centro__riga1">
+                <div class="prodotto__box__Qt">
+                  <div class="prodotto__box__Qt__testo tb">Qt.</div>
+                  <div class="prodotto__box__Qt__numero tb">1</div>  
+                </div>
+                <div class="prodotto__box__prezzo">
+                  <div class="prodotto__box__prezzo__testo">€</div>
+                  <div class="prodotto__box__prezzo__numero">1.3</div>
+                </div>
+              </div>  
+              <div class="prodotto__box__centro__riga2">
+                <div class="prodotto__box__cart border-b tw ts-1">Aggiungi<br>al carrello</div>
+              </div>           
+            </div>
+            <div class="prodotto__box__add normal-text tb">+</div>
+          </div>          
+        </div>
+
+        <div class="prodotto">
+          <a href="cappuccino.html">
+            <img src="Immagini/cappuccino.png" class="immagine-prodotto prodotto--sma">
+          </a>
+          <h3 class="prodotto__nome to ts-1">Cappuccino</h3>
+          <div class="prodotto__box">
+            <div class="prodotto__box__sub normal-text tb">-</div>
+            <div class="prodotto__box__centro">
+              <div class="prodotto__box__centro__riga1">
+                <div class="prodotto__box__Qt">
+                  <div class="prodotto__box__Qt__testo tb">Qt.</div>
+                  <div class="prodotto__box__Qt__numero tb">1</div>  
+                </div>
+                <div class="prodotto__box__prezzo">
+                  <div class="prodotto__box__prezzo__testo">€</div>
+                  <div class="prodotto__box__prezzo__numero">1.8</div>
+                </div>
+              </div>  
+              <div class="prodotto__box__centro__riga2">
+                <div class="prodotto__box__cart border-b tw ts-1">Aggiungi<br>al carrello</div>
+              </div>           
+            </div>
+            <div class="prodotto__box__add normal-text tb">+</div>
+          </div>          
+        </div>
+
+        <div class="prodotto">
+          <a href="caffe-latte.html">
+            <img src="Immagini/caffe-latte.png" class="immagine-prodotto prodotto--sma">
+          </a>
+          <h3 class="prodotto__nome to ts-1">Caffe latte</h3>
+          <div class="prodotto__box">
+            <div class="prodotto__box__sub normal-text tb">-</div>
+            <div class="prodotto__box__centro">
+              <div class="prodotto__box__centro__riga1">
+                <div class="prodotto__box__Qt">
+                  <div class="prodotto__box__Qt__testo tb">Qt.</div>
+                  <div class="prodotto__box__Qt__numero tb">1</div>  
+                </div>
+                <div class="prodotto__box__prezzo">
+                  <div class="prodotto__box__prezzo__testo">€</div>
+                  <div class="prodotto__box__prezzo__numero">1.5</div>
+                </div>
+              </div>  
+              <div class="prodotto__box__centro__riga2">
+                <div class="prodotto__box__cart border-b tw ts-1">Aggiungi<br>al carrello</div>
+              </div>           
+            </div>
+            <div class="prodotto__box__add normal-text tb">+</div>
+          </div>          
+        </div>
+
+        <div class="prodotto">
+          <a href="ginseng.html">
+            <img src="Immagini/ginseng.png" class="immagine-prodotto prodotto--sma">
+          </a>
+          <h3 class="prodotto__nome to ts-1">Ginseng</h3>
+          <div class="prodotto__box">
+            <div class="prodotto__box__sub normal-text tb">-</div>
+            <div class="prodotto__box__centro">
+              <div class="prodotto__box__centro__riga1">
+                <div class="prodotto__box__Qt">
+                  <div class="prodotto__box__Qt__testo tb">Qt.</div>
+                  <div class="prodotto__box__Qt__numero tb">1</div>  
+                </div>
+                <div class="prodotto__box__prezzo">
+                  <div class="prodotto__box__prezzo__testo">€</div>
+                  <div class="prodotto__box__prezzo__numero">1.5</div>
+                </div>
+              </div>  
+              <div class="prodotto__box__centro__riga2">
+                <div class="prodotto__box__cart border-b tw ts-1">Aggiungi<br>al carrello</div>
+              </div>           
+            </div>
+            <div class="prodotto__box__add normal-text tb">+</div>
+          </div>          
+        </div>
+
+        <div class="prodotto">
+          <a href="orzo.html">
+            <img src="Immagini/orzo.png" class="immagine-prodotto prodotto--sma">
+          </a>
+          <h3 class="prodotto__nome to ts-1">Orzo</h3>
+          <div class="prodotto__box">
+            <div class="prodotto__box__sub normal-text tb">-</div>
+            <div class="prodotto__box__centro">
+              <div class="prodotto__box__centro__riga1">
+                <div class="prodotto__box__Qt">
+                  <div class="prodotto__box__Qt__testo tb">Qt.</div>
+                  <div class="prodotto__box__Qt__numero tb">1</div>  
+                </div>
+                <div class="prodotto__box__prezzo">
+                  <div class="prodotto__box__prezzo__testo">€</div>
+                  <div class="prodotto__box__prezzo__numero">1.5</div>
+                </div>
+              </div>  
+              <div class="prodotto__box__centro__riga2">
+                <div class="prodotto__box__cart border-b tw ts-1">Aggiungi<br>al carrello</div>
+              </div>           
+            </div>
+            <div class="prodotto__box__add normal-text tb">+</div>
+          </div>          
+        </div>
+       
+        <div class="prodotto">
+          <a href="the.html">
+            <img src="Immagini/the.png" class="immagine-prodotto prodotto--sma">
+          </a>
+          <h3 class="prodotto__nome to ts-1">The</h3>
+          <div class="prodotto__box">
+            <div class="prodotto__box__sub normal-text tb">-</div>
+            <div class="prodotto__box__centro">
+              <div class="prodotto__box__centro__riga1">
+                <div class="prodotto__box__Qt">
+                  <div class="prodotto__box__Qt__testo tb">Qt.</div>
+                  <div class="prodotto__box__Qt__numero tb">1</div>  
+                </div>
+                <div class="prodotto__box__prezzo">
+                  <div class="prodotto__box__prezzo__testo">€</div>
+                  <div class="prodotto__box__prezzo__numero">1.5</div>
+                </div>
+              </div>  
+              <div class="prodotto__box__centro__riga2">
+                <div class="prodotto__box__cart border-b tw ts-1">Aggiungi<br>al carrello</div>
+              </div>           
+            </div>
+            <div class="prodotto__box__add normal-text tb">+</div>
+          </div>          
+        </div>
+
+        <div class="prodotto">
+          <a href="cioccolata-calda.html">
+            <img src="Immagini/cioccolata-calda.png" class="immagine-prodotto prodotto--sma">
+          </a>
+          <h3 class="prodotto__nome to ts-1">Cioccolata calda</h3>
+          <div class="prodotto__box">
+            <div class="prodotto__box__sub normal-text tb">-</div>
+            <div class="prodotto__box__centro">
+              <div class="prodotto__box__centro__riga1">
+                <div class="prodotto__box__Qt">
+                  <div class="prodotto__box__Qt__testo tb">Qt.</div>
+                  <div class="prodotto__box__Qt__numero tb">1</div>  
+                </div>
+                <div class="prodotto__box__prezzo">
+                  <div class="prodotto__box__prezzo__testo">€</div>
+                  <div class="prodotto__box__prezzo__numero">1.8</div>
+                </div>
+              </div>  
+              <div class="prodotto__box__centro__riga2">
+                <div class="prodotto__box__cart border-b tw ts-1">Aggiungi<br>al carrello</div>
+              </div>           
+            </div>
+            <div class="prodotto__box__add normal-text tb">+</div>
+          </div>          
+        </div>
+
+
+
+      </div>
+    </div>
+  </div>
+  
+
+
+
+
+
+
+
+
+
+
+ 
+  <script src="finestra-cart.js"></script>
+  <script src="carrello.js"></script>
+  <script src="contatore-prodotti-ordine.js"></script>
+  <script src="slider-prodotti.js"></script>
+  <script src="effetti-ordine.js"></script>
+  <script src="descrizione-prodotto.js"></script>
+
+
+  <!--............................................................................................
+                                              JQUERY
+  ...............................................................................................-->
+  <!-- Questa è l'inclusione di jquery ottimizzato -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+  <!--Javascript per il flickity, arriva da flickity cdnjs -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/flickity/2.3.0/flickity.pkgd.min.js" integrity="sha512-+m9auGg9ZwnDc37W8RSsLhzKBLVOYsf5BKzSpYrYhQQk6hItXOhBFKHuHbMCpoABCUO6l4HVK+dFwxMIME3E7Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <script type="text/javascript">  /* Tag script */
+
+    $(document).ready(function(){   /* DOCUMENT READY serve per far funzionare bene il jquery, ossia lo esegue solo quando sono già stati caricati tutti ijavascript */
+
+      /*EVENTI ON CLICK */
+
+      $(".hamburger").on('click', function() {  /* Quando si clicca su hamburger si scatena l'evento */
+
+          $(".asta-1").toggleClass("asta-1--rotation"); /* Usando il metodo TOGGLECLASS ottengo proprio un effetto di bottone, infatti toggleClass serve proprio ad aggiungere e rimuovere la classe dall'elemento puntato */
+          $(".asta-2").toggleClass("asta-2--out");
+          $(".asta-3").toggleClass("asta-3--rotation");
+          $(".menu").toggleClass("menu--open"); /* toggleClass serve ad aggiungere o rimuovere una classe ad un elemento in questo caso gli elementi
+                                                  sono quelli puntati dalla classe hamburger e la classe che verra aggiunta o rimossa è menu--open.
+                                                  La classe menu--open verrà poi definita nel file di stile. */
+      });
+
+      ScrollReveal().reveal('.reveal', { distance: '100px', duration: 1500, easing: 'cubic-bezier(.215, .61, .355, 1)', interval: 600 }); /* Codice javascript di SCROLLREVEAL che applica all'elemento puntato dalla classe reveal un fade in veloce */
+                                        /* Aggiungendo { distance: '100px' } il testo arriva da sotto */
+                                        /* Aggiungendo { duration: 1500 } gli aumento un pò la durata*/
+                                        /* Aggiungendo { easing: 'cubic-bezier(.215, .61, .355, 1)' } posso modificarli la velocità */
+                                        /* Aggiungendo { interval: 600 } creo un ritardo tra le animazioni di elementi che sono sulla stessa righa, se per esempio ho due colonne avrò due fade in con un lieve ritardo */
+                                        /* Adesso applicherò la classe reveal all'elemento che voglio animare */
+
+      ScrollReveal().reveal('.zoom', { duration: 1500, easing: 'cubic-bezier(.215, .61, .355, 1)', interval: 200, scale: 0.65}); /* Creo uno scrollreveal zoom che da l'effetto di apparizione agli elementi a cui voglio applicarlo */
+                                        /* Aggiungendo {scale: 0.65} andrò a scalare l'elemento in questo caso lo rimpicciolisco */
+
+      ScrollReveal().reveal('.zoom-delay', { duration: 1500, easing: 'cubic-bezier(.215, .61, .355, 1)', delay: 1000, scale: 0.65}); /* Creo uno scrollreveal zoom-delay che agiunge allo zoom di prima un ritardo */
+
+
+      /*
+      $("#panficato200cart").on('mousedown', function () {  // Effetto pulsante 
+        $("#panficato200cart").toggleClass("border-b");
+      });
+      $("#panficato200cart").on('mouseup', function () {
+        $("#panficato200cart").toggleClass("border-b");
+      });
+
+      $("#panficato400cart").on('mousedown', function () {  // Effetto pulsante 
+        $("#panficato400cart").toggleClass("border-b");
+      });
+      $("#panficato400cart").on('mouseup', function () {
+        $("#panficato400cart").toggleClass("border-b");
+      });
+
+      $("#cantuccicart").on('mousedown', function () {  // Effetto pulsante 
+        $("#cantuccicart").toggleClass("border-b");
+      });
+      $("#cantuccicart").on('mouseup', function () {
+        $("#cantuccicart").toggleClass("border-b");
+      });
+
+      $("#cantucci-fichicart").on('mousedown', function () {  // Effetto pulsante 
+        $("#cantucci-fichicart").toggleClass("border-b");
+      });
+      $("#cantucci-fichicart").on('mouseup', function () {
+        $("#cantucci-fichicart").toggleClass("border-b");
+      });
+
+      */
+      
+    });
+
+
+
+  </script>
+
+
+</body>
+</html>
